@@ -41,7 +41,7 @@ async def write_content_to_file(idx: int, content: str):
 
 
 async def process_url(session: aiohttp.ClientSession, url: str, idx: int):
-    """asd"""
+    """Get content from the given URL and write it to the file"""
     
     try:
         async with asyncio.timeout(3):
