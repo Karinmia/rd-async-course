@@ -1,0 +1,4 @@
+https://wiki.python.org/moin/Iterator
+https://robotdreams.cc/uk/course/python
+https://robotdreams.cc/uk/course/machine-learning-tag
+https://robotdreams.cc/uk/course/security
