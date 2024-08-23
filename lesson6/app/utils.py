@@ -17,11 +17,13 @@ def get_cve_filenames(path: str) -> list:
     """Returns list of paths of CVE files."""
     
     files_list = []
-    for entry in os.scandir(path):
-        if entry.is_dir(follow_symlinks=False):
-            for year_entry in os.scandir(entry.path):
-                if year_entry.is_dir(follow_symlinks=True):
-                    for code_entry in os.scandir(year_entry.path):
-                        files_list.append(code_entry.path)
+    for year_entry in os.scandir(path):
+        if year_entry.is_dir(follow_symlinks=False):
+            for code_entry in os.scandir(year_entry.path):
+                if code_entry.is_dir(follow_symlinks=True):
+                    for cve_entry in os.scandir(code_entry.path):
+                        files_list.append(cve_entry.path)
+        
+        iteration += 1
     
     return files_list

@@ -3,5 +3,5 @@ alembic
 asyncio
 asyncpg
 greenlet
-sqlalchemy
+sqlalchemy[asyncio]
 python-dotenv
