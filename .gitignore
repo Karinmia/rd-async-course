@@ -162,3 +162,5 @@ cython_debug/
 #.idea/
 
 *_output.txt
+**/*.prof
+**/.DS_Store
