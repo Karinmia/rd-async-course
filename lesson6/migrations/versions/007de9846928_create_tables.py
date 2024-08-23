@@ -1,8 +1,8 @@
 """create tables
 
-Revision ID: 438462aa1232
+Revision ID: 007de9846928
 Revises: 
-Create Date: 2024-08-23 21:48:42.238301
+Create Date: 2024-08-23 23:56:22.933122
 
 """
 from typing import Sequence, Union
@@ -12,7 +12,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision: str = '438462aa1232'
+revision: str = '007de9846928'
 down_revision: Union[str, None] = None
 branch_labels: Union[str, Sequence[str], None] = None
 depends_on: Union[str, Sequence[str], None] = None
@@ -28,25 +28,24 @@ def upgrade() -> None:
     sa.Column('date_reserved', sa.Date(), nullable=True),
     sa.Column('date_published', sa.Date(), nullable=True),
     sa.Column('date_updated', sa.Date(), nullable=True),
-    sa.CheckConstraint("id ~ '^CVE-[0-9]{4}-[0-9]{4,19}$'", name='valid_cve_id'),
     sa.PrimaryKeyConstraint('id')
     )
     op.create_table('adp_containers',
-    sa.Column('id', sa.UUID(), server_default=sa.text('gen_random_uuid()'), nullable=False),
-    sa.Column('title', sa.String(length=256), nullable=False),
-    sa.Column('description', sa.String(length=4096), nullable=False),
-    sa.Column('date_assigned', sa.Date(), server_default=sa.text('now()'), nullable=False),
-    sa.Column('date_public', sa.Date(), server_default=sa.text('now()'), nullable=False),
+    sa.Column('id', sa.Integer(), autoincrement=True, nullable=False),
+    sa.Column('title', sa.String(length=256), nullable=True),
+    sa.Column('description', sa.String(length=4096), nullable=True),
+    sa.Column('date_assigned', sa.Date(), nullable=True),
+    sa.Column('date_public', sa.Date(), nullable=True),
     sa.Column('cve_record_id', sa.String(length=29), nullable=False),
     sa.ForeignKeyConstraint(['cve_record_id'], ['cves.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
     op.create_table('cna_containers',
-    sa.Column('id', sa.UUID(), server_default=sa.text('gen_random_uuid()'), nullable=False),
-    sa.Column('title', sa.String(length=256), nullable=False),
+    sa.Column('id', sa.Integer(), autoincrement=True, nullable=False),
+    sa.Column('title', sa.String(length=256), nullable=True),
     sa.Column('description', sa.String(length=4096), nullable=False),
-    sa.Column('date_assigned', sa.Date(), server_default=sa.text('now()'), nullable=False),
-    sa.Column('date_public', sa.Date(), server_default=sa.text('now()'), nullable=False),
+    sa.Column('date_assigned', sa.Date(), nullable=True),
+    sa.Column('date_public', sa.Date(), nullable=True),
     sa.Column('cve_record_id', sa.String(length=29), nullable=False),
     sa.ForeignKeyConstraint(['cve_record_id'], ['cves.id'], ),
     sa.PrimaryKeyConstraint('id')

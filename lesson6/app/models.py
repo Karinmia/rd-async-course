@@ -82,11 +82,7 @@ class CVERecord(Base):
 class CnaContainer(Base):
     __tablename__ = "cna_containers"
 
-    id: Mapped[uuid.UUID] = mapped_column(
-        UUID(as_uuid=True),
-        primary_key=True,
-        server_default=func.gen_random_uuid(),
-    )
+    id: Mapped[int] = mapped_column(primary_key=True, autoincrement=True)
     title: Mapped[str] = mapped_column(String(length=256), nullable=True)
     description: Mapped[str] = mapped_column(
         String(length=4096),
@@ -127,11 +123,7 @@ class CnaContainer(Base):
 class AdpContainer(Base):
     __tablename__ = "adp_containers"
 
-    id: Mapped[uuid.UUID] = mapped_column(
-        UUID(as_uuid=True),
-        primary_key=True,
-        server_default=func.gen_random_uuid(),
-    )
+    id: Mapped[int] = mapped_column(primary_key=True, autoincrement=True)
     title: Mapped[str] = mapped_column(String(length=256), nullable=True)
     description: Mapped[str] = mapped_column(String(length=4096), nullable=True)
     date_assigned: Mapped[datetime] = mapped_column(Date(), nullable=True)

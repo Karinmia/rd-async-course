@@ -23,7 +23,5 @@ def get_cve_filenames(path: str) -> list:
                 if code_entry.is_dir(follow_symlinks=True):
                     for cve_entry in os.scandir(code_entry.path):
                         files_list.append(cve_entry.path)
-        
-        iteration += 1
     
     return files_list
