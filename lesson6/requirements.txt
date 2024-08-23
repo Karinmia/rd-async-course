@@ -1,0 +1,7 @@
+aiofiles
+alembic
+asyncio
+asyncpg
+greenlet
+sqlalchemy
+python-dotenv
