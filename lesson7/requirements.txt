@@ -1,0 +1,6 @@
+aiohttp
+gunicorn
+uvicorn
+starlette
+fastapi
+requests
