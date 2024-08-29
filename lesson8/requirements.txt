@@ -1,0 +1,10 @@
+aiohttp
+alembic
+asyncio
+asyncpg
+fastapi
+fastapi-pagination
+greenlet
+pydantic
+python-dotenv
+sqlalchemy[asyncio]
